@@ -1,0 +1,24 @@
+{
+  "board_id": "synthetic-knotty-01",
+  "width": 20,
+  "height": 12,
+  "seed": 42,
+  "note": "Synthetic stock only — not mill scans or research panel photos.",
+  "defects": [
+    {
+      "kind": "knot",
+      "vertices": [[5, 2], [8, 2], [8, 4], [5, 4]]
+    },
+    {
+      "kind": "crack",
+      "vertices": [[14, 5], [16, 5], [16, 8], [14, 8]]
+    },
+    {
+      "kind": "knot",
+      "x": 9,
+      "y": 8,
+      "w": 2,
+      "h": 2
+    }
+  ]
+}

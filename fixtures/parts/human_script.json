@@ -1,0 +1,19 @@
+{
+  "player": "human",
+  "note": "Curated rotation-aware placements on synthetic board; includes one illegal knot hit (rejected).",
+  "placements": [
+    {"part_id": "O", "x": 5, "y": 2, "rotation": 0},
+    {"part_id": "B", "x": 8, "y": 0, "rotation": 0},
+    {"part_id": "C", "x": 0, "y": 4, "rotation": 0},
+    {"part_id": "D", "x": 11, "y": 8, "rotation": 0},
+    {"part_id": "G", "x": 0, "y": 0, "rotation": 0},
+    {"part_id": "F", "x": 8, "y": 5, "rotation": 0},
+    {"part_id": "H", "x": 0, "y": 9, "rotation": 0},
+    {"part_id": "J", "x": 16, "y": 5, "rotation": 0},
+    {"part_id": "K", "x": 5, "y": 10, "rotation": 0},
+    {"part_id": "L", "x": 17, "y": 0, "rotation": 0},
+    {"part_id": "M", "x": 18, "y": 8, "rotation": 90},
+    {"part_id": "N", "x": 5, "y": 0, "rotation": 0},
+    {"part_id": "O", "x": 17, "y": 3, "rotation": 0}
+  ]
+}

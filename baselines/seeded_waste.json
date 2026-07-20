@@ -1,0 +1,11 @@
+{
+  "board_id": "synthetic-knotty-01",
+  "catalog_id": "synthetic-panel-set-01",
+  "seed": 42,
+  "solver": "greedy_area_desc_no_rotate",
+  "solver_waste_pct": 7.5893,
+  "solver_placed_area": 207,
+  "solver_placed_count": 11,
+  "epsilon": 0.05,
+  "note": "Contest freeze for local MVP — synthetic only; not a mill-grade benchmark."
+}

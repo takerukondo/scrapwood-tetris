@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: If you use this software, please cite it and the SCI-Arc research lineage authors below.
+title: scrapwood-tetris
+type: software
+version: 0.1.0
+date-released: "2026-07-20"
+license: MIT
+authors:
+  - family-names: Kondo
+    given-names: Takeru
+    affiliation: Independent personal remix (not official SCI-Arc)
+abstract: >
+  Experimental local MVP: defect-aware packing contest on synthetic boards
+  where knots/cracks are hard constraints; human, greedy solver, and agent
+  stub compete on waste%. Independent personal remix inspired by portable
+  mechanisms from SCI-Arc Research “Construction Innovation: AI and Robotic
+  Fabrication”; not an official SCI-Arc publication. Takeru Kondo individual
+  role on the source project: unknown. Does not copy research efficiency
+  percentages.
+keywords:
+  - nesting
+  - defect-aware packing
+  - material efficiency
+  - synthetic-fixtures
+  - agent-benchmark
+references:
+  - type: article
+    title: "Construction Innovation: AI and Robotic Fabrication"
+    authors:
+      - family-names: Rehm
+        given-names: Casey
+      - family-names: Hupalo
+        given-names: Masha
+      - family-names: Garcia
+        given-names: Carolina Silva
+      - family-names: Pike
+        given-names: Julia
+    url: http://research.sciarc.edu/projects/10-construction-innovation-ai-and-robotic-fabrication
+    notes: SCI-Arc Research project page; mechanism lineage only
+  - type: software
+    title: SVGNest
+    url: https://github.com/Jack000/SVGnest
+    notes: Conceptual prior art for nesting; code not vendored in this MVP
