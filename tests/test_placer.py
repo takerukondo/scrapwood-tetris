@@ -1,6 +1,6 @@
 """Deterministic placer."""
 
-from scrapwood.agent import agent_place, solver_place
+from scrapwood.agent import rotation_heuristic_place, solver_place
 from scrapwood.constraints import check_placement, validate_state
 from scrapwood.load import load_contest_fixture
 from scrapwood.placer import greedy_place
@@ -30,7 +30,7 @@ def test_greedy_never_overlaps_defects():
 
 def test_agent_and_solver_differ():
     board, catalog = load_contest_fixture()
-    assert solver_place(board, catalog) != agent_place(board, catalog)
+    assert solver_place(board, catalog) != rotation_heuristic_place(board, catalog)
 
 
 def test_rotation_improves_or_matches_no_rotate():

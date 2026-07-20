@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 from typing import List, Optional
 
-from scrapwood.agent import agent_place, solver_place
+from scrapwood.agent import rotation_heuristic_place, solver_place
 from scrapwood.constraints import check_placement, has_defect_constraints
 from scrapwood.contest import leaderboard_lines, run_contest
 from scrapwood.env import make_env
@@ -73,10 +73,13 @@ def cmd_demo(args: argparse.Namespace) -> int:
     solver_sc = score(board, catalog, solver_pl)
     print(f"[solver] placed={solver_sc.placed_count}  waste%={solver_sc.waste_pct:.2f}")
 
-    # 2) Agent stub
-    agent_pl = agent_place(board, catalog)
-    agent_sc = score(board, catalog, agent_pl)
-    print(f"[agent ] placed={agent_sc.placed_count}  waste%={agent_sc.waste_pct:.2f}")
+    # 2) A deliberately different heuristic: rotations allowed, small first.
+    rotation_pl = rotation_heuristic_place(board, catalog)
+    rotation_sc = score(board, catalog, rotation_pl)
+    print(
+        f"[rotate] placed={rotation_sc.placed_count}  "
+        f"waste%={rotation_sc.waste_pct:.2f}"
+    )
 
     # 3) Human script (if present) + illegal demo
     if human_script is not None:
@@ -110,7 +113,7 @@ def cmd_demo(args: argparse.Namespace) -> int:
     # Live env step sample
     if args.env_steps:
         print()
-        print("=== gym-style env steps (solver poses) ===")
+        print("=== step-by-step scorer (solver placements) ===")
         env = make_env(board, catalog)
         obs = env.reset(seed=board.seed)
         print(f"reset waste%={obs['waste_pct']:.2f}")
@@ -165,7 +168,7 @@ def cmd_dump_solver(args: argparse.Namespace) -> int:
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="scrapwood",
-        description="Defect-aware scrapwood packing contest (local MVP)",
+        description="Defect-aware scrapwood packing contest",
     )
     p.add_argument(
         "--board",
@@ -186,7 +189,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--env-steps",
         type=int,
         default=3,
-        help="show N gym-style steps (0 to skip)",
+        help="show N step-by-step placements (0 to skip)",
     )
     demo.set_defaults(func=cmd_demo)
 

@@ -1,117 +1,49 @@
 # scrapwood-tetris
 
-**Experimental local MVP.** Defect-aware scrapwood packing contest: human / solver / agent compete on **waste%** when knots and cracks are hard constraints.
+A clean rectangle is easy. A board with knots and cracks is where the argument starts.
 
-Independent personal remix — **not** an official SCI-Arc publication. Synthetic boards only.
+`scrapwood-tetris` is a small packing contest in which defects are hard constraints and every player is judged by the same waste calculation. The included match is intentionally uneven: a largest-first heuristic, a rotation-happy heuristic, and one hand-arranged layout compete on a synthetic 20×12 board.
 
-**Source-page authors** (SCI-Arc Research “Construction Innovation: AI and Robotic Fabrication”): Casey Rehm, Masha Hupalo, Carolina Silva Garcia, Julia Pike. **takeru_role:** `unknown` (not sole authorship of the source research).
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -e ".[dev]"
 
-See [ATTRIBUTION.md](./ATTRIBUTION.md), [PROVENANCE.md](./PROVENANCE.md), [CITATION.cff](./CITATION.cff).
+scrapwood demo --ascii
+```
 
-## Core promise
+The output includes a leaderboard, a rejected placement that lands on a knot, and the winning board:
 
 ```text
-knotty synthetic board  →  illegal if placement ∩ defect
-human / solver / agent  →  same scorer  →  waste% leaderboard
+rank  player   waste%    util%   placed  rejected
+1     human       4.02   95.98      12         1
+2     solver      7.59   92.41      11         0
+3     rotate     36.61   63.39      11         0
 ```
 
-**10s demo line:** 節だらけ合成板で人間 vs solver vs agent の waste% がライブ更新。
+The “human” row is a curated placement script, not a user study. The heuristics are a deliberately weak pair, not AI agents. Their job is to make ordering and rotation choices inspectable under one scorer.
 
-## One-command run
-
-```bash
-cd projects/sciarc-remix-swarm/worktrees/scrapwood-tetris
-chmod +x scripts/run.sh scripts/ci-local.sh
-./scripts/run.sh
-```
-
-Or manually:
+## Useful commands
 
 ```bash
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-pip install -e .
+scrapwood check-baseline   # detect scorer or fixture drift
+scrapwood dump-solver      # placements and score as JSON
 pytest -q
-python -m scrapwood demo --ascii --env-steps 3
 ```
 
-## Quick CLI
+## Rules of this tiny board
 
-```bash
-# Contest demo (solver + agent + human script)
-python -m scrapwood demo --ascii
+- Parts are axis-aligned rectangles and may not overlap.
+- Defects are polygons but use their bounding boxes for collision checks.
+- Waste is unoccupied usable area; rejected pieces do not count.
+- The catalog is oversized, so ordering changes the result.
 
-# Freeze check vs golden solver waste%
-python -m scrapwood check-baseline
+The surprising result in the fixture—that the hand arrangement beats the largest-first heuristic—is not evidence that humans generally pack better. It is a prompt to implement a real search method and compare it without changing the rules.
 
-# Dump solver placements JSON
-python -m scrapwood dump-solver
-```
+## Research lineage
 
-## Layout
+I worked as a research assistant at SCI-Arc Research from May 2024 to January 2025. This is an independent implementation inspired by [Construction Innovation: AI and Robotic Fabrication](http://research.sciarc.edu/projects/10-construction-innovation-ai-and-robotic-fabrication), credited to Casey Rehm, Masha Hupalo, Carolina Silva Garcia, and Julia Pike. No research imagery, structural data, mill scans, or robot instructions are included. See [ATTRIBUTION.md](ATTRIBUTION.md) and [PROVENANCE.md](PROVENANCE.md).
 
-| Path | Role |
-|---|---|
-| `fixtures/boards/knotty_board.json` | Synthetic board + knot/crack polygons |
-| `fixtures/parts/catalog.json` | Oversized synthetic part set |
-| `fixtures/parts/human_script.json` | Curated human placements (+ illegal knot hit) |
-| `baselines/seeded_waste.json` | Contest-freeze golden waste% |
-| `src/scrapwood/` | geometry, constraints, placer, scoring, env, contest, CLI |
-| `tests/` | unit + contest freeze + Hypothesis property tests |
+This is a packing experiment, not structural or fabrication advice.
 
-## Scoring
-
-```text
-usable_area = board_area - defect_aabb_area
-waste%      = 100 * (usable_area - placed_area) / usable_area
-```
-
-Lower waste% wins. Defect overlap → placement rejected (not scored).
-
-## Gym-shaped API
-
-```python
-from scrapwood.env import make_env
-from scrapwood.load import load_contest_fixture
-from scrapwood.models import Placement
-
-board, catalog = load_contest_fixture()
-env = make_env(board, catalog)
-obs = env.reset(seed=42)
-obs, reward, done, info = env.step(Placement("O", 0, 0, 0))
-print(env.score().waste_pct)
-```
-
-## Limitations / non-goals / experimental
-
-**This is experimental software.**
-
-### Non-goals
-
-- Not mill-grade CAM, CNC post, or kerf-accurate cut planning
-- Not a full SVGNest / libnest2d / NFP+GA nesting engine
-- Not a physics / robot fabrication demo video product
-- Not a claim of SCI-Arc CLT research efficiency percentages
-- No GitHub publish / deploy / PR from this worktree by default
-
-### Limitations
-
-- Axis-aligned rectangles; defect polygons use AABB hard constraints
-- Thin deterministic bottom-left placer (not optimal packing)
-- Solver baseline disables rotation; human/agent may rotate
-- Agent is a heuristic stub, not a trained policy
-- Synthetic fixtures only — no partner mill scans
-
-### Kill conditions (do not ship as)
-
-- Defect-free puzzle toy
-- Physics demo video only
-- SVGNest skin with no defect kernel
-
-### Third-party
-
-MVP uses **synthetic** boards/parts only. No fabrication-gallery re-exhibition. SVGNest/rectpack are conceptual prior art — code not vendored. See swarm `registry/third_party_risks.yaml` and [ATTRIBUTION.md](./ATTRIBUTION.md).
-
-## License
-
-MIT — see [LICENSE](./LICENSE).
+MIT — see [LICENSE](LICENSE).

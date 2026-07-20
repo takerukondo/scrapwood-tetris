@@ -1,3 +1,3 @@
-"""scrapwood-tetris: defect-aware packing contest (local MVP)."""
+"""scrapwood-tetris: a defect-aware packing contest."""
 
 __version__ = "0.1.0"

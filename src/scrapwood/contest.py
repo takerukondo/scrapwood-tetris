@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Dict, List, Optional, Sequence
 
-from scrapwood.agent import agent_place, solver_place
+from scrapwood.agent import rotation_heuristic_place, solver_place
 from scrapwood.constraints import has_defect_constraints
 from scrapwood.models import Board, PartSpec, Placement
 from scrapwood.placer import place_sequence
@@ -58,8 +58,8 @@ def run_contest(
     solver_pl = solver_place(board, catalog)
     results.append(run_player("solver", board, catalog, solver_pl))
 
-    agent_pl = agent_place(board, catalog)
-    results.append(run_player("agent", board, catalog, agent_pl))
+    rotation_pl = rotation_heuristic_place(board, catalog)
+    results.append(run_player("rotate", board, catalog, rotation_pl))
 
     if human_script is not None:
         ok, rejected = place_sequence(board, catalog, human_script)

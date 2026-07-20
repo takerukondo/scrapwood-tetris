@@ -18,7 +18,7 @@ def test_contest_leaderboard_human_beats_solver():
     results = run_contest(board, catalog, human)
     by = {r.player: r for r in results}
     assert by["human"].score.waste_pct < by["solver"].score.waste_pct
-    assert by["solver"].score.waste_pct < by["agent"].score.waste_pct
+    assert by["solver"].score.waste_pct < by["rotate"].score.waste_pct
 
 
 def test_human_script_rejects_knot_hit():

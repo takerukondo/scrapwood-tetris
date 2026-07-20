@@ -1,0 +1,21 @@
+{
+  "catalog_id": "synthetic-panel-set-01",
+  "note": "Synthetic oversized catalog — not all parts fit; order affects waste%.",
+  "parts": [
+    {"part_id": "A", "w": 10, "h": 6},
+    {"part_id": "B", "w": 9, "h": 5},
+    {"part_id": "C", "w": 8, "h": 5},
+    {"part_id": "D", "w": 7, "h": 4},
+    {"part_id": "E", "w": 6, "h": 4},
+    {"part_id": "F", "w": 6, "h": 3},
+    {"part_id": "G", "w": 5, "h": 4},
+    {"part_id": "H", "w": 5, "h": 3},
+    {"part_id": "I", "w": 4, "h": 4},
+    {"part_id": "J", "w": 4, "h": 3},
+    {"part_id": "K", "w": 5, "h": 2},
+    {"part_id": "L", "w": 3, "h": 3},
+    {"part_id": "M", "w": 4, "h": 2},
+    {"part_id": "N", "w": 3, "h": 2},
+    {"part_id": "O", "w": 2, "h": 2}
+  ]
+}

@@ -1,49 +1,9 @@
-# Attribution template — scrapwood-tetris
+# Research lineage and credits
 
-**Status:** Independent personal remix project (experimental local MVP)  
-**Not** an official SCI-Arc publication, endorsement, or research product.  
-**permission_status:** `confirmed_by_takeru` (audit trail for SCI-Arc reuse premise only; does **not** clear third-party ToS/IP)
+`scrapwood-tetris` is a personal software project by Takeru Kondo, not an official SCI-Arc publication.
 
-## Collaborators / page authors (from source card)
+Its conceptual starting point is [Construction Innovation: AI and Robotic Fabrication](http://research.sciarc.edu/projects/10-construction-innovation-ai-and-robotic-fabrication), credited on the project page to Casey Rehm, Masha Hupalo, Carolina Silva Garcia, and Julia Pike. Takeru worked as a research assistant at SCI-Arc Research from May 2024 to January 2025; this repository does not claim sole authorship of that research.
 
-### Construction Innovation: AI and Robotic Fabrication (`construction-innovation-ai-and-robotic-fabrication`)
+The source code, board, part catalog, placement script, and scores here were created for this implementation. It contains no research imagery, claimed efficiency figures, partner mill scans, CLT data, or robot instructions.
 
-- **Authors:** Casey Rehm, Masha Hupalo, Carolina Silva Garcia, Julia Pike
-- **URL:** http://research.sciarc.edu/projects/10-construction-innovation-ai-and-robotic-fabrication
-- **source_id:** `construction-innovation-ai-and-robotic-fabrication` / remix card also references `src-09-construction-innovation`
-
-## Takeru role
-
-- **takeru_role:** `unknown` (beyond general group-researcher / SCI-Arc Research membership context)
-- Public page does not list an individual role for Takeru Kondo on this project.
-- This repository does **not** claim Takeru sole authorship of SCI-Arc research.
-
-## Attribution string (copy-paste)
-
-> Independent personal remix inspired by the portable mechanism of treating
-> heterogeneous / defective material as an optimization constraint, from
-> SCI-Arc Research “Construction Innovation: AI and Robotic Fabrication”
-> (Casey Rehm, Masha Hupalo, Carolina Silva Garcia, Julia Pike).
-> Not an official SCI-Arc publication. Takeru Kondo individual role on the
-> source project: unknown. Synthetic boards and parts only — do not copy
-> research efficiency percentages; not mill-grade CAM or a re-exhibition of
-> fabrication gallery assets.
-
-## Third-party / OSS notes
-
-| Asset | Used? | Notes |
-|---|---|---|
-| SCI-Arc fabrication gallery / research page images | **No** | Mechanism lineage only; no re-exhibition |
-| Research claimed efficiency % (e.g. 15% material-efficiency) | **No** | Not copied into scores or README claims |
-| Partner mill scans / CLT datasets | **No** | Synthetic fixtures only |
-| SVGNest / libnest2d / rectpack **code** | **No** | Conceptual prior art (nesting + score); thin original BLF placer |
-| Are.na progress channel assets | **No** | Not redistributed |
-
-## Required fields checklist
-
-- [x] listed_authors_from_source_card
-- [x] takeru_role = unknown
-- [x] permission_status = confirmed_by_takeru
-- [x] source_url
-- [x] attribution_string
-- [x] third_party_assets_used_or_substituted = synthetic only
+Related nesting projects include [SVGNest](https://github.com/Jack000/SVGnest) and [libnest2d](https://github.com/tamasmeszaros/libnest2d). Their code is not vendored here; the included placer is a small original bottom-left heuristic.

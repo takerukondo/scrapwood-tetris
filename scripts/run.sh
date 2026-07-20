@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# One-command local MVP: install deps + pytest + 10s contest demo.
+# Rebuild the environment, run tests, and play the sample match.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
@@ -35,4 +35,4 @@ echo "=== baseline freeze ==="
 python -m scrapwood check-baseline
 
 echo ""
-echo "OK — scrapwood-tetris local MVP green."
+echo "OK — tests, demo, and regression baseline passed."

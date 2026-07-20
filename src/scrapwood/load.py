@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from importlib.resources import files
 from pathlib import Path
 from typing import Any, List, Optional, Tuple, Union
 
@@ -12,24 +13,25 @@ from scrapwood.models import Board, PartSpec, Placement
 PathLike = Union[str, Path]
 
 
-def _root() -> Path:
-    return Path(__file__).resolve().parents[2]
+def _data_path(*parts: str) -> Path:
+    """Return a packaged demo-data path (works from an installed wheel)."""
+    return Path(str(files("scrapwood").joinpath("data", *parts)))
 
 
 def default_board_path() -> Path:
-    return _root() / "fixtures" / "boards" / "knotty_board.json"
+    return _data_path("knotty_board.json")
 
 
 def default_parts_path() -> Path:
-    return _root() / "fixtures" / "parts" / "catalog.json"
+    return _data_path("catalog.json")
 
 
 def default_baseline_path() -> Path:
-    return _root() / "baselines" / "seeded_waste.json"
+    return _data_path("seeded_waste.json")
 
 
 def default_human_path() -> Path:
-    return _root() / "fixtures" / "parts" / "human_script.json"
+    return _data_path("human_script.json")
 
 
 def _read_json(path: PathLike) -> Any:

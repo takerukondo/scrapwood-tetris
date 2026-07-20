@@ -5,15 +5,16 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "scrapwood-tetris"
 version = "0.1.0"
-description = "Defect-aware scrapwood packing contest: human / solver / agent on waste%"
+description = "Defect-aware scrapwood packing contest with one shared scorer"
 readme = "README.md"
-license = { text = "MIT" }
+license = "MIT"
 requires-python = ">=3.9"
 authors = [{ name = "Takeru Kondo" }]
 dependencies = []
 
 [project.optional-dependencies]
 dev = [
+  "build>=1.2",
   "pytest>=8.0",
   "hypothesis>=6.100",
 ]
@@ -23,6 +24,9 @@ scrapwood = "scrapwood.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+scrapwood = ["data/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

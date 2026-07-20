@@ -10,19 +10,16 @@ authors:
     given-names: Takeru
     affiliation: Independent personal remix (not official SCI-Arc)
 abstract: >
-  Experimental local MVP: defect-aware packing contest on synthetic boards
-  where knots/cracks are hard constraints; human, greedy solver, and agent
-  stub compete on waste%. Independent personal remix inspired by portable
-  mechanisms from SCI-Arc Research “Construction Innovation: AI and Robotic
-  Fabrication”; not an official SCI-Arc publication. Takeru Kondo individual
-  role on the source project: unknown. Does not copy research efficiency
-  percentages.
+  Defect-aware packing contest on a synthetic board where knots and cracks
+  are hard constraints. A curated layout and two deterministic heuristics
+  compete under one waste scorer. Independent software inspired by SCI-Arc
+  Research's “Construction Innovation: AI and Robotic Fabrication.”
 keywords:
   - nesting
   - defect-aware packing
   - material efficiency
   - synthetic-fixtures
-  - agent-benchmark
+  - optimization
 references:
   - type: article
     title: "Construction Innovation: AI and Robotic Fabrication"
@@ -40,4 +37,4 @@ references:
   - type: software
     title: SVGNest
     url: https://github.com/Jack000/SVGnest
-    notes: Conceptual prior art for nesting; code not vendored in this MVP
+    notes: Conceptual prior art for nesting; code not vendored

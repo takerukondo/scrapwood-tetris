@@ -1,4 +1,4 @@
-"""Agent stub: alternate greedy heuristic under the same scorer."""
+"""Two deliberately small packing heuristics under the same scorer."""
 
 from __future__ import annotations
 
@@ -8,12 +8,14 @@ from scrapwood.models import Board, PartSpec, Placement
 from scrapwood.placer import greedy_place
 
 
-def agent_place(board: Board, catalog: Sequence[PartSpec]) -> List[Placement]:
+def rotation_heuristic_place(
+    board: Board, catalog: Sequence[PartSpec]
+) -> List[Placement]:
     """
-    Stub agent: smallest-first bottom-left with rotations.
+    Smallest-first bottom-left heuristic with rotations.
 
-    Same constraint checker and scorer as the solver baseline; order and
-    rotation policy differ. Not a trained policy.
+    Same constraint checker and scorer as the baseline; only ordering and
+    rotation policy differ. This is not an AI agent or a trained policy.
     """
     return greedy_place(board, catalog, order="area_asc", allow_rotate=True)
 
